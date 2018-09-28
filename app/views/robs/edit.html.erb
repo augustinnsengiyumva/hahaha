@@ -1,0 +1,25 @@
+<%= form_with(model: @robs, local: true) do |form| %>
+<% if logged_in? %>
+<div class="blog_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="blog_title">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+<!--  <div class="field">-->
+<!--  <%= form.label :image %>-->
+<!--  <%= form.file_field :image, id: :feed_image %>-->
+<!--  <%= form.hidden_field :image_cache %>-->
+<!--</div>-->
+  <h2>Edit rob</h2>
+
+  
+  <%= form.submit %>
+<% end %>
+ <% end %>
+<h1>Not signed in?</h1>
+<%= link_to 'Sign in', sessions_path %>
+<h1>You are new here</h1>
+<%= link_to 'Sign up', new_user_path %>

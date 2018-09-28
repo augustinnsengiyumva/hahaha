@@ -1,0 +1,14 @@
+<% if logged_in? %>
+<h1>Rob Detail Screen </h1>
+
+
+
+<p id="notice"><%= notice %></p>
+<p>Title: <%= @robs.title %></p>
+<p>Contents: <%= @robs.content %></p>
+ <% end %>
+
+<h1>Not signed in?</h1>
+<%= link_to 'Sign in', sessions_path %>
+<h1>You are new here</h1>
+<%= link_to 'Sign up', new_user_path %>

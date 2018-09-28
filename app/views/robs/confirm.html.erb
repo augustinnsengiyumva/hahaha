@@ -1,0 +1,26 @@
+
+
+<h3>Comfirm</h3>
+
+
+<%= form_with(model: @rob, url: robs_path, local: true) do |form| %>
+     <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+
+  <p>Title:<%= @rob.title %></p>
+  <p>Body:<%= @rob.content %></p>
+  
+  <%= form.submit  "submit" %>
+<% end %>
+
+<%= form_with(model: @rob, url: new_rob_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.hidden_field :image %>
+
+  <%= form.submit "Back", name: 'back' %>
+<% end %>
+
+
+
+

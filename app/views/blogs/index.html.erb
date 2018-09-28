@@ -1,0 +1,28 @@
+<h1>List of blogs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Contents</th></th>
+  </tr>
+
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.title %></td>
+    <td><%= blog.content %></td>
+   <td><%= link_to 'Check the details', blog_path(blog.id) %></td>
+       <% if current_user.id == blog.user_id %>
+    <td><%= link_to "Edit this blog", edit_blog_path(blog.id) %></td>
+ 
+    
+  <td>  <%= link_to 'Post a new blog', new_blog_path %></td>
+  </tr>
+<% end %>
+<% end %>
+
+  
+  
+</table>
+
+<br>
+

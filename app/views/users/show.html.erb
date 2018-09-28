@@ -1,0 +1,39 @@
+<h1><%= @user.name %>'s page</h1>
+
+<p>email address: <%= @user.email %></p>
+
+ <% user = current_user %>
+ <% if logged_in? %>
+   <%= link_to 'Check the details', user_path %>
+   <%= link_to "Edit this rob", edit_user_path %>
+   <%= link_to 'Post a new rob', new_rob_path%>
+ <% end %>   
+    <div class="container">
+<!--<h3>Here are the favored robs list</h3>-->
+<!--<table class="table">-->
+<!--<tr>-->
+<!--<th class="col-md-4">Title</th> -->
+<!--<th class="col-md-4">Content</th> -->
+<!--<th class="col-md-4">Image</th> -->
+<!--</tr>-->
+<% @robs.each do |rob| %>
+<tr>
+<td><%= rob.title %> </td>
+<td><%= rob.content %> </td>
+<!--<td><%= rob.image %> </td>-->
+<!--<td><%= image_tag rob.image_url %></td>-->
+</tr>
+
+<% end %>
+</table>
+</div>
+    
+ 
+  
+  </tr>
+ 
+
+
+    
+
+

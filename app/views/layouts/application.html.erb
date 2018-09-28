@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   <div id="header">
+    <title>Blog</title>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  </div>
+
+   <body>
+    
+   
+     <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+    
+    
+    
+    <% if logged_in? %>
+    
+      <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "Home", robs_path %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <% @user = current_user %>
+      
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+ 
+<%= yield %>
+ 
+
+<footer>
+    
+    <p>© 2015-2016 Copyright AUGUSTIN Corp.</p>
+  </footer>
+ 
+ <style>
+     footer {
+  width: 100%;
+  background-color:#2c3e50;
+  padding: 20px 0 10px 0;
+  color: white;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+}
+ </style>
+ 
+</body>
+ 
+</html>
