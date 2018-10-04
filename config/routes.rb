@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :edit, :destroy]
   resources :comments, only: [:new, :create, :edit, :destroy]
   resources :users
-  # resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
   
   # resources :robs do
   #   resources :comments

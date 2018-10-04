@@ -9,19 +9,18 @@
    <%= link_to 'Post a new rob', new_rob_path%>
  <% end %>   
     <div class="container">
-<!--<h3>Here are the favored robs list</h3>-->
-<!--<table class="table">-->
-<!--<tr>-->
-<!--<th class="col-md-4">Title</th> -->
-<!--<th class="col-md-4">Content</th> -->
-<!--<th class="col-md-4">Image</th> -->
-<!--</tr>-->
+<h3>Here are the favored robs list</h3>
+<table class="table">
+<tr>
+<th class="col-md-4">Title</th> 
+<th class="col-md-4">Content</th> 
+
+</tr>
 <% @robs.each do |rob| %>
 <tr>
 <td><%= rob.title %> </td>
 <td><%= rob.content %> </td>
-<!--<td><%= rob.image %> </td>-->
-<!--<td><%= image_tag rob.image_url %></td>-->
+
 </tr>
 
 <% end %>

@@ -10,7 +10,7 @@ class RobsController < ApplicationController
     # @search = Rob.search(params[:q])
 
     # @robs = @search.result
-    # @favorite = Favorite.all
+    @favorite = Favorite.all
     # @comment = Comment.all
     # @category = Category.all
     
@@ -76,7 +76,7 @@ class RobsController < ApplicationController
   def show
     # 追記する
      @robs = Rob.find(params[:id])
-    # @favorite = current_user.favorites.find_by(rob_id: @robs.id)
+    @favorite = current_user.favorites.find_by(rob_id: @robs.id)
   #     @comment = @rob.comments.build
   # @comments = @rob.comments
   
