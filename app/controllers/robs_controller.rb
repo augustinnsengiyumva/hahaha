@@ -108,7 +108,7 @@ class RobsController < ApplicationController
   private
   #Before_action : Set_rob, only: [:show, :edit, :update, :destroy] 
     def rob_params
-    params.require(:rob).permit(:title, :content, :image).merge(user: current_user)
+    params.require(:rob).permit(:title, :content).merge(user: current_user)
    end
   
   
