@@ -9,8 +9,11 @@
 
   <p>Title:<%= @rob.title %></p>
   <p>Body:<%= @rob.content %></p>
-  
+  <p>Body:<%= image_tag(@rob.image.url(:thumb)) %></p>
+   <%= hidden_field_tag :"cache[image]",@rob.image.cache_name%>
   <%= form.submit  "submit" %>
+  
+  
 <% end %>
 
 <%= form_with(model: @rob, url: new_rob_path, local: true, method: 'get') do |form| %>

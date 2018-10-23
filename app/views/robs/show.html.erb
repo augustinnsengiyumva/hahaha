@@ -1,4 +1,3 @@
-<% if logged_in? %>
 <h1>Rob Detail Screen </h1>
 
 <% unless @robs.user_id == current_user.id %>
@@ -12,9 +11,15 @@
 <p id="notice"><%= notice %></p>
 <p>Title: <%= @robs.title %></p>
 <p>Contents: <%= @robs.content %></p>
- <% end %>
+<p>Image: <%= @robs.image %></p>
 
-<h2>Not signed in?</h2>
-<%= link_to 'Sign in', sessions_path %>
-<h2>You are new here</h2>
-<%= link_to 'Sign up', new_user_path %>
+
+<p>
+  
+  <strong>Image:</strong>
+  <%= image_tag @robs.image_url, size:'180x180'  %>
+  
+</p>
+
+
+

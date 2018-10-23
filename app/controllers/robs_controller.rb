@@ -6,57 +6,34 @@ class RobsController < ApplicationController
  
   
   def index
-     @rob = Rob.all
+    @rob = Rob.all
     # @search = Rob.search(params[:q])
-
     # @robs = @search.result
-    @favorite = Favorite.all
+    # @favorite = Favorite.all
     # @comment = Comment.all
-    # @category = Category.all
-    
-    # if params[:search]
-    # @robs = Rob.search(params[:search]).order("created_at DESC")
-    # else
-    # @robs = Rob.all.order("created_at DESC")
-    # end
-    # @robs = Rob.search(params[:term])
-     # @robs = if params[:term]
-     #   Rob.where('Title LIKE ?', "%#{params[:term]}%")
-     # else
-     #   Rob.all
-     # end
   end
 
   # Add
   
   
   def new
-  # @category ||= Category.all
-   if params[:back]
+    if params[:back]
       @rob = Rob.new(rob_params)
     else
-     @rob = Rob.new    
-
-   end
-
-  end
-
-
-   
-
+       @rob = Rob.new    
+    end
   # @robs = Rob.new
   # @robs.user_id = current_user.id
- 
+  end
   
   def create
     @rob = Rob.new(rob_params)
-    
-    # @rob.image.retrieve_from_cache! params[:cache][:image] 
+    @rob.image.retrieve_from_cache! params[:cache][:image] 
     # @rob.user_id = current_user.id
     respond_to do |format|
     if @rob.save
       # Switch to the list screen and display a message saying "You have created new blog!"
-      RobMailer.rob_mail(@rob).deliver
+      # RobMailer.rob_mail(@rob).deliver
       #redirect_to robs_path, Notice: "You have created new rob!"
        format.html { redirect_to @rob, notice: 'News is successfully created.' }
       format.js { render :index }
@@ -68,7 +45,6 @@ class RobsController < ApplicationController
   end
   end
    def confirm
-    # @category ||= Category.all
     @rob = Rob.new(rob_params)
      render :new if @rob.invalid?
    end
@@ -76,12 +52,9 @@ class RobsController < ApplicationController
   def show
     # 追記する
      @robs = Rob.find(params[:id])
-    @favorite = current_user.favorites.find_by(rob_id: @robs.id)
+     @favorite = current_user.favorites.find_by(rob_id: @robs.id)
   #     @comment = @rob.comments.build
   # @comments = @rob.comments
-  
- # @category = @rob.category.build
- # @categories = @rob.categories
      
   end
   def edit
@@ -107,10 +80,9 @@ class RobsController < ApplicationController
   #Omitted
   private
   #Before_action : Set_rob, only: [:show, :edit, :update, :destroy] 
-    def rob_params
-    params.require(:rob).permit(:title, :content).merge(user: current_user)
+   def rob_params
+    params.require(:rob).permit(:title, :content, :image).merge(user: current_user)
    end
-  
   
   def set_rob
     @rob = Rob.find(params[:id])
