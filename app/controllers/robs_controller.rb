@@ -33,7 +33,7 @@ class RobsController < ApplicationController
     respond_to do |format|
     if @rob.save
       # Switch to the list screen and display a message saying "You have created new blog!"
-      # RobMailer.rob_mail(@rob).deliver
+       RobMailer.rob_mail(@rob).deliver
       #redirect_to robs_path, Notice: "You have created new rob!"
        format.html { redirect_to @rob, notice: 'News is successfully created.' }
       format.js { render :index }
